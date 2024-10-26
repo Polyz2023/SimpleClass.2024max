@@ -168,7 +168,7 @@ web.use((req, res, next) => {
         console.log('Get data at /register/sign/up: ', req.body);
 
         const { Id_Token } = await CreateNewUser(email, password, username, IMG, tname); // Получаем токен
-        res.status(200).json({ token: Id_Token }); // Отправляем токен клиенту
+        res.status(200).json({ token: Id_Token });
         console.log("token: ", Id_Token);
     } catch (error) {
         console.error(`Error at /register/sign/up: ${error}`);
