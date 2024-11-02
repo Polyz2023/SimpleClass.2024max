@@ -194,6 +194,7 @@ web.post('/register/sign/in', async (req,res)=>{
 web.post('/user/create/test', async (req, res)=>{
     const { TName, stid, questions, uid, TP } = req.body;
     const resp = await CreateTest(uid, {name:TName, stid:stid, questions:questions, TP:TP});
+    res.status(200).json({message:"yyyyyeeeeeeeeee"})
 });
 
 web.post('/register/sign/acc', async (req,res)=>{
