@@ -47,11 +47,11 @@ const CreateNewUser = async (email, password, username, ProfIcon, tname) => {
         const UserCred = await createUserWithEmailAndPassword(auth, email, password);
         const CurrUser = UserCred.user.uid;
 
-        const PIcon = await PImageToStorage(ProfIcon, username);
+        //const PIcon = await PImageToStorage(ProfIcon, username);
 
         await setDoc(doc(firestore, 'users', CurrUser), {
             username: username,
-            ProfileIcon: PIcon,  // Используем загруженный URL профиля
+            //ProfileIcon: PIcon,  // Используем загруженный URL профиля
             tname: tname,
             Tests: []
         });
@@ -229,7 +229,7 @@ web.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 
-const PORT = process.env.PORT || 7000;
+const PORT = process.env.PORT || 9000;
 web.listen(PORT, () => {
     console.log(`Server built successfully on port ${PORT}, and server: http://localhost:${PORT}`);
 });
