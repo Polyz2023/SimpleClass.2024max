@@ -68,9 +68,12 @@ const SignInUser = async (email, password) => {
         const UserCred = await signInWithEmailAndPassword(auth, email, password);
         const user = UserCred.user;
 
-        const Id_Token = await user.getIdToken();
-
-        return Id_Token;
+        if (user) {
+            const Id_Token = await user.getIdToken();
+            return Id_Token;
+        } else {
+            throw new Error("User credential is missing after sign-in.");
+        }
     } catch (error){
         console.log("Error at SignInUser: ", error);
     }

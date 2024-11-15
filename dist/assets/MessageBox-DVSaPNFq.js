@@ -1,0 +1,1 @@
+import{_ as s,o as a,c as t,b as o,t as r,n}from"./index-DaybQjpB.js";const c={props:{message:{type:String,required:!0},messageType:{type:String,default:"info"}}},i={for:""};function _(p,d,e,l,m,g){return a(),t("div",{class:n([`message-box ${e.messageType}`,"container"])},[o("label",i,r(e.message),1)],2)}const u=s(c,[["render",_],["__scopeId","data-v-515c4620"]]);export{u as M};
