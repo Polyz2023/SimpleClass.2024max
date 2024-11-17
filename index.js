@@ -156,6 +156,19 @@ const SetMessageUser = async (uid, data_message) => {
     }
 }
 
+const GetNews = async () => {
+    try{
+        const CallRef = doc(firestore, "news", "new");
+        const UsDocSnap = await getDoc(CallRef);
+
+        console.log('News:',UsDocSnap.data());
+        return UsDocSnap.data();
+        
+    } catch (error) {
+        console.error("Error at get news: " + error);
+    }
+};
+
 web.use(bodyParser.json({ limit: '50mb' }));
 web.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 web.use(cors());
@@ -226,6 +239,11 @@ web.post('/user/get/test', async (req,res)=>{
 web.post('/user/send/test', async (req, res)=>{
     const {message, uid} = req.body;
     await SetMessageUser(uid,message);
+});
+
+web.post('/news', async (req,res)=>{
+    const resp = await GetNews();
+    res.json({message:"/news data", data:resp});
 });
 
 web.get('*', (req, res) => {
